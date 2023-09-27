@@ -1,22 +1,28 @@
 import unittest
-from main import caesar
+from main import pow
 
-class TestCaesarFunction(unittest.TestCase):
+class TestPowFunction(unittest.TestCase):
 
-    def test_caesar_with_offset_3(self):
-        self.assertEqual(caesar(3, "abc"), "def")
+    def test_pow_example_1(self):
+        self.assertEqual(pow(2, 3), 8)
 
-    def test_caesar_with_offset_2(self):
-        self.assertEqual(caesar(2, "alta"), "cnvc")
+    def test_pow_example_2(self):
+        self.assertEqual(pow(7, 2), 49)
 
-    def test_caesar_with_offset_10(self):
-        self.assertEqual(caesar(10, "alterraacademy"), "kvdobbkkmknowi")
+    def test_pow_example_3(self):
+        self.assertEqual(pow(10, 5), 100000)
 
-    def test_caesar_with_offset_1_wraparound(self):
-        self.assertEqual(caesar(1, "abcdefghijklmnopqrstuvwxyz"), "bcdefghijklmnopqrstuvwxyza")
+    def test_pow_example_4(self):
+        self.assertEqual(pow(17, 6), 24137569)
 
-    def test_caesar_with_large_offset_wraparound(self):
-        self.assertEqual(caesar(1000, "abcdefghijklmnopqrstuvwxyz"), "mnopqrstuvwxyzabcdefghijkl")
+    def test_pow_example_5(self):
+        self.assertEqual(pow(5, 3), 125)
+
+    def test_pow_with_zero_exponent(self):
+        self.assertEqual(pow(7, 0), 1)
+
+    def test_pow_with_negative_exponents(self):
+        self.assertEqual(pow(3, -2), 1/9)
 
 if __name__ == '__main__':
     unittest.main()

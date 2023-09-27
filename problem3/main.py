@@ -1,14 +1,20 @@
-def array_unique(arrayA, arrayB):
+def join_array_remove_duplicate(arrayA, arrayB):
     # your code here
-    output = []
-    for el in arrayA:
-        if el not in arrayB:
-            output.append(el)
-    return output
+    hasil = []
+    for el in (list(arrayA) + list(arrayB)):
+        if el not in hasil:
+            hasil.append(el)
+    return hasil
 
 if __name__ == '__main__':
-    print(array_unique([1, 2, 3, 4], [1, 3, 5, 10, 16])) # [2, 4]
-    print(array_unique([10, 20, 30, 40], [5, 10, 15, 59])) # [20, 30, 40]
-    print(array_unique([1, 3, 7], [1, 3, 5])) # [7]
-    print(array_unique([3, 8], [2, 8])) # [3]
-    print(array_unique([1, 2, 3], [3, 2, 1])) # []
+    # Test cases
+    print(join_array_remove_duplicate(["apel", "anggur"], ["lemon", "leci", "nanas"]))
+    # ["apel", "anggur", "lemon", "leci", "nanas"]
+
+
+    print(join_array_remove_duplicate(["samsung", "apple"], ["apple", "sony", "xiaomi"]))
+    # ["samsung", "apple", "sony", "xiaomi"]
+
+
+    print(join_array_remove_duplicate(["football", "basketball"], ["basketball", "football"]))
+    # ["football", "basketball"]

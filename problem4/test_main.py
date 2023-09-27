@@ -1,22 +1,37 @@
 import unittest
-from main import find_max_sum_sub_array
+from main import muncul_sekali
 
-class TestFindMaxSumSubArray(unittest.TestCase):
+class TestMunculSekali(unittest.TestCase):
 
-    def test_case_1(self):
-        self.assertEqual(find_max_sum_sub_array(3, [2, 1, 5, 1, 3, 2]), 9)
+    def test_example_1(self):
+        result = muncul_sekali("1234123")
+        expected = [4]
+        self.assertEqual(result, expected)
 
-    def test_case_2(self):
-        self.assertEqual(find_max_sum_sub_array(2, [2, 3, 4, 1, 5]), 7)
+    def test_example_2(self):
+        result = muncul_sekali("76523752")
+        expected = [6, 3]
+        self.assertEqual(result, expected)
 
-    def test_case_3(self):
-        self.assertEqual(find_max_sum_sub_array(2, [2, 1, 4, 1, 1]), 5)
+    def test_example_3(self):
+        result = muncul_sekali("12345")
+        expected = [1, 2, 3, 4, 5]
+        self.assertEqual(result, expected)
 
-    def test_case_4(self):
-        self.assertEqual(find_max_sum_sub_array(3, [2, 1, 4, 1, 1]), 7)
+    def test_example_4(self):
+        result = muncul_sekali("1122334455")
+        expected = []
+        self.assertEqual(result, expected)
 
-    def test_case_5(self):
-        self.assertEqual(find_max_sum_sub_array(4, [2, 1, 4, 1, 1]), 8)
+    def test_example_5(self):
+        result = muncul_sekali("0872504")
+        expected = [8, 7, 2, 5, 4]
+        self.assertEqual(result, expected)
+
+    def test_empty_string(self):
+        result = muncul_sekali("")
+        expected = []
+        self.assertEqual(result, expected)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,18 +1,19 @@
-def find_max_sum_sub_array(k, arr):
-    max_sum = float('-inf')
-    current_sum = 0
-    for i in range(k):
-        current_sum += arr[i]
-    for i in range(k, len(arr)):
-        max_sum = max(max_sum, current_sum)
-        current_sum += arr[i]
-        current_sum -= arr[i - k]
-    max_sum = max(max_sum, current_sum)
-    return max_sum
+def muncul_sekali(angka):
+    unique_el = []
+    jumlah = {}
+    for el in angka:
+        if el in jumlah:
+            jumlah[el] += 1
+        else:
+            jumlah[el] = 1
+    for el, count in jumlah.items():
+        if count == 1:
+            unique_el.append(el)
+    return [int(el) for el in unique_el]
 
 if __name__ == '__main__':
-    print(find_max_sum_sub_array(3, [2, 1, 5, 1, 3, 2])) # 9
-    print(find_max_sum_sub_array(2, [2, 3, 4, 1, 5])) # 7
-    print(find_max_sum_sub_array(2, [2, 1, 4, 1, 1])) # 5
-    print(find_max_sum_sub_array(3, [2, 1, 4, 1, 1])) # 7
-    print(find_max_sum_sub_array(4, [2, 1, 4, 1, 1])) # 8
+    print(muncul_sekali("1234123")) # [4]
+    print(muncul_sekali("76523752")) # [6, 3]
+    print(muncul_sekali("12345")) # [1, 2, 3, 4, 5]
+    print(muncul_sekali("1122334455")) # []
+    print(muncul_sekali("0872504")) # [8, 7, 2, 5, 4]

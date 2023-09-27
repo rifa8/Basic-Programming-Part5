@@ -1,22 +1,37 @@
 import unittest
-from main import array_unique
+from main import join_array_remove_duplicate
 
-class TestArrayUniqueFunction(unittest.TestCase):
+class TestJoinArrayRemoveDuplicate(unittest.TestCase):
 
-    def test_unique_elements_case_1(self):
-        self.assertEqual(array_unique([1, 2, 3, 4], [1, 3, 5, 10, 16]), [2, 4])
+    def test_no_duplicates(self):
+        result = join_array_remove_duplicate(["apel", "anggur"], ["lemon", "leci", "nanas"])
+        expected = ["apel", "anggur", "lemon", "leci", "nanas"]
+        self.assertEqual(result, expected)
 
-    def test_unique_elements_case_2(self):
-        self.assertEqual(array_unique([10, 20, 30, 40], [5, 10, 15, 59]), [20, 30, 40])
+    def test_with_duplicates(self):
+        result = join_array_remove_duplicate(["samsung", "apple"], ["apple", "sony", "xiaomi"])
+        expected = ["samsung", "apple", "sony", "xiaomi"]
+        self.assertEqual(result, expected)
 
-    def test_unique_elements_case_3(self):
-        self.assertEqual(array_unique([1, 3, 7], [1, 3, 5]), [7])
+    def test_same_elements(self):
+        result = join_array_remove_duplicate(["football", "basketball"], ["basketball", "football"])
+        expected = ["football", "basketball"]
+        self.assertEqual(result, expected)
 
-    def test_unique_elements_case_4(self):
-        self.assertEqual(array_unique([3, 8], [2, 8]), [3])
+    def test_empty_arrays(self):
+        result = join_array_remove_duplicate([], [])
+        expected = []
+        self.assertEqual(result, expected)
 
-    def test_no_unique_elements(self):
-        self.assertEqual(array_unique([1, 2, 3], [3, 2, 1]), [])
+    def test_one_empty_array(self):
+        result = join_array_remove_duplicate(["apple", "banana"], [])
+        expected = ["apple", "banana"]
+        self.assertEqual(result, expected)
+
+    def test_with_duplicates_and_empty(self):
+        result = join_array_remove_duplicate(["apple", "banana", "banana", "cherry"], ["cherry", "date", "date"])
+        expected = ["apple", "banana", "cherry", "date"]
+        self.assertEqual(result, expected)
 
 if __name__ == '__main__':
     unittest.main()

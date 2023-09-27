@@ -1,14 +1,18 @@
-def remove_duplicates(array):
-    non_duplikat = 1
-    for i in range(1, len(array)):
-        if array[i] != array[non_duplikat - 1]:
-            array[non_duplikat] = array[i]
-            non_duplikat += 1
-    return non_duplikat
+def pair_sum(arr, target):
+    el_kiri, el_kanan = 0, len(arr) - 1    
+    while el_kiri < el_kanan:
+        hasil = arr[el_kiri] + arr[el_kanan]
+        if hasil == target:
+            return [el_kiri, el_kanan]
+        if hasil < target:
+            el_kiri += 1
+        else:
+            el_kanan -= 1
+    return None
 
 if __name__ == '__main__':
-    print(remove_duplicates([2, 3, 3, 3, 6, 9, 9])) # 4
-    print(remove_duplicates([2, 3, 4, 5, 6, 9, 9])) # 6
-    print(remove_duplicates([2, 2, 2, 11])) # 2
-    print(remove_duplicates([2, 2, 2, 11])) # 2
-    print(remove_duplicates([1, 2, 3, 11, 11])) # 4
+    print(pair_sum([1, 2, 3, 4, 6], 6)) # [1, 3]
+    print(pair_sum([2, 5, 9, 11], 11)) # [0, 2]
+    print(pair_sum([1, 3, 5, 7], 12)) # [2, 3]
+    print(pair_sum([1, 4, 6, 8], 10)) # [1, 2]
+    print(pair_sum([1, 5, 6, 7], 6)) # [0, 1]

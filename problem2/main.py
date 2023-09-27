@@ -1,20 +1,18 @@
-def caesar(offset, input_str):
-    output = ''
-    for i in range(len(input_str)):
-        karakter = input_str[i]
-        if karakter == ' ':
-            output += ' '
-        elif karakter.islower():
-            output += chr((ord(karakter) + offset - 97) % 26 + 97)
-        elif karakter.isupper():
-            output += chr((ord(karakter) + offset -65) % 26 + 65)
-        else:
-            output += karakter
-    return output
+def pow(x, n):
+    hasil = 1
+    if n < 0:
+        x = 1 / x
+        n = -n
+    while n > 0:
+        if n % 2 == 1:
+            hasil *= x
+        x *= x
+        n //= 2
+    return hasil
 
 if __name__ == '__main__':
-    print(caesar(3, "abc")) # def
-    print(caesar(2, "alta")) # cnvc
-    print(caesar(10, "alterraacademy")) # kvdobbkkmknowi
-    print(caesar(1, "abcdefghijklmnopqrstuvwxyz")) # bcdefghijklmnopqrstuvwxyza
-    print(caesar(1000, "abcdefghijklmnopqrstuvwxyz")) # mnopqrstuvwxyzabcdefghijkl
+    print(pow(2, 3)) # 8
+    print(pow(7, 2)) # 49
+    print(pow(10, 5)) # 100000
+    print(pow(17, 6)) # 24137569
+    print(pow(5, 3)) # 125
